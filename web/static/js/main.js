@@ -96,7 +96,7 @@ function generate(ip, port, text, speaker_id) {
       var speaker_id = $('input[name=id]:checked').val();
       var speaker = $('input[name=id]:checked').attr("speaker");
 
-      generate('0.0.0.0', 51000, text, speaker_id);
+      generate('10.114.72.109', 5000, text, speaker_id);
 
       var lowpass = wavesurfer.backend.ac.createGain();
       wavesurfer.backend.setFilter(lowpass);

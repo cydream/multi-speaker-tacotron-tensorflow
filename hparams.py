@@ -8,7 +8,7 @@ def f(num):
 basic_params = {
     # Comma-separated list of cleaners to run on text prior to training and eval. For non-English
     # text, you may want to use "basic_cleaners" or "transliteration_cleaners" See TRAINING_DATA.md.
-    'cleaners': 'english_cleaners', #originally korean_cleaners
+    'cleaners': 'korean_cleaners', #originally korean_cleaners
 }
 
 basic_params.update({
@@ -25,12 +25,12 @@ basic_params.update({
 
 if True:
     basic_params.update({
-        'sample_rate': 22050, #originally 24000 (krbook), 22050(lj-data), 20000(others) 
+        'sample_rate': 20000, #originally 24000 (krbook), 22050(lj-data), 20000(others) 
     })
 
 basic_params.update({
     # Model
-    'model_type': 'single', # [single, simple, deepvoice]
+    'model_type': 'simple', # [single, simple, deepvoice]
     'speaker_embedding_size': f(16),
 
     'embedding_size': f(256),
@@ -113,13 +113,13 @@ elif False: # Single Speaker with generalization
         'post_bank_channel_size': f(128),
         'post_rnn_size': f(128),
 
-        'reduction_factor': 4,
+        'reduction_factor': 5,
     })
 
 
 basic_params.update({
     # Training
-    'batch_size': 32,
+    'batch_size': 64,
     'adam_beta1': 0.9,
     'adam_beta2': 0.999,
     'use_fixed_test_inputs': False,

@@ -67,5 +67,5 @@ if __name__ == '__main__':
     if config.audio_pattern is not None:
         duration = get_durations(get_paths_by_pattern(config.data_dir))
     elif config.data_path is not None:
-        paths = load_json(config.data_path).keys()
+        paths = load_json(config.data_path, encoding="utf8").keys()
         duration = get_durations(paths)

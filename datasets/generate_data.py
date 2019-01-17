@@ -150,8 +150,11 @@ def _process_utterance(audio_path, data_dir, tokens, loss_coeff):
     if not os.path.exists(numpy_path):
         wav = load_audio(audio_path)
 
-        linear_spectrogram = spectrogram(wav).astype(np.float32)
-        mel_spectrogram = melspectrogram(wav).astype(np.float32)
+        try:
+          linear_spectrogram = spectrogram(wav).astype(np.float32)
+          mel_spectrogram = melspectrogram(wav).astype(np.float32)
+        except:
+          return 0
 
         data = {
             "linear": linear_spectrogram.T,

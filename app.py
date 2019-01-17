@@ -1,5 +1,6 @@
 #!flask/bin/python
 # -*- coding: cp949 -*-
+import datetime
 import os, traceback
 import hashlib
 import argparse
@@ -55,6 +56,7 @@ def amplify(path, keep_silence=300):
 
 def generate_audio_response(text, speaker_id):
     global global_config
+    print(datetime.datetime.now())
 
     model_name = os.path.basename(global_config.load_path)
     isKorean=global_config.is_korean
@@ -69,9 +71,11 @@ def generate_audio_response(text, speaker_id):
 
     if not os.path.exists(add_postfix(real_path, 0)):
         try:
+            print(datetime.datetime.now())
             audio = synthesizer.synthesize(
                     [text], paths=[real_path], speaker_ids=[speaker_id],
                     attention_trim=True, isKorean=isKorean)[0]
+            print(datetime.datetime.now())
         except Exception as e:
             traceback.print_exc()
             return jsonify(success=False), 400
